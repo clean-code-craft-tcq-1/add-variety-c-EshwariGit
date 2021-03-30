@@ -2,8 +2,6 @@
 #include <stdio.h>
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
-  int lowerLimit = 0;
-  int upperLimit = 0;
   if(value < lowerLimit) {
     return TOO_LOW;
   }
