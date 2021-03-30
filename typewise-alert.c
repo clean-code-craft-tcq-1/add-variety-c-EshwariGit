@@ -11,7 +11,7 @@ BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
   return NORMAL;
 }
 
-BreachLimit classifyTemperatureBreach[3] = {{0,35}, {0,45}, {0,40}}
+BreachLimit classifyTemperatureBreach[3] = {{0,35}, {0,45}, {0,40}};
 
 void checkAndAlert(
     AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
