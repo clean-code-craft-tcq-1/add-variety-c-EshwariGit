@@ -20,7 +20,8 @@ typedef struct {
 
 typedef enum {
   TO_CONTROLLER,
-  TO_EMAIL
+  TO_EMAIL,
+  TO_CONSOLE
 } AlertTarget;
 
 typedef struct {
@@ -28,8 +29,13 @@ typedef struct {
   char brand[48];
 } BatteryCharacter;
 
+tyoedef enum{
+	FAIL,
+	PASS
+} InfoType;
 void checkAndAlert(
   AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC);
 BreachType inferBreach(double value, double lowerLimit, double upperLimit);
-void sendToController(BreachType breachType);
-void sendToEmail(BreachType breachType);
+InfoType sendToController(BreachType breachType);
+InfoType sendToEmail(BreachType breachType);
+InfoType sendToConsole(BreachType breachType);
