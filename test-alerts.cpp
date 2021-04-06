@@ -17,6 +17,6 @@ TEST_CASE("infers the breach according which is too normal") {
 
 TEST_CASE("Infers If Email Sending Working") {
   BatteryCharacter batterychar = {HI_ACTIVE_COOLING, "NORMAL"};
-  REQUIRE(checkAndAlert(To_EMAIL, batterychar,30 ) == PASS);
+  REQUIRE(checkAndAlert(TO_EMAIL, batterychar,30 ) == PASS);
 }
 
