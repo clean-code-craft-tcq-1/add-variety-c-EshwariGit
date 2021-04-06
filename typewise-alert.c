@@ -22,13 +22,13 @@ void checkAndAlert(
 
 }
 
-void sendToController(BreachType breachType) {
+InfoType sendToController(BreachType breachType) {
   const unsigned short header = 0xfeed;
   printf("%x : %x\n", header, breachType);
   return PASS;
 }
 
-void sendToEmail(BreachType breachType) {
+InfoType sendToEmail(BreachType breachType) {
   const char* recepient = "a.b@c.com";
  
   switch(breachType) {
