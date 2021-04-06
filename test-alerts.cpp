@@ -52,8 +52,8 @@ TEST_CASE("Infers If Sending to COntroller is Working -CASE2") {
 
 TEST_CASE("When breach infered is NORMALcheck if ALERT is triggered")
 {
-  REQUIRE(sendToConsole(NORMAL) == FAIL);	
-  REQUIRE(sendToEmail(NORMAL) == FAIL);
+  REQUIRE(sendToConsole(NORMAL) == PASS);	
+  REQUIRE(sendToEmail(NORMAL) == PASS);
 }
 
 
