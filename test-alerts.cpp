@@ -35,4 +35,9 @@ TEST_CASE("Infers If Sending to Console is Working -CASE1") {
   REQUIRE(checkAndAlert(TO_CONSOLE, batterychar, 30 ) == PASS);
 }
 
+TEST_CASE("Infers If Sending to Console is Working -CASE2") {
+  BatteryCharacter batterychar = {MED_ACTIVE_COOLING, "CONSOLE"};
+  REQUIRE(checkAndAlert(TO_CONSOLE, batterychar, 15 ) == PASS);
+}
+
 
