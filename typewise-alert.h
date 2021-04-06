@@ -29,7 +29,7 @@ typedef struct {
   char brand[48];
 } BatteryCharacter;
 
-tyoedef enum{
+typedef enum{
 	FAIL,
 	PASS
 } InfoType;
