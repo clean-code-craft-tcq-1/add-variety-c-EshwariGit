@@ -33,7 +33,7 @@ typedef enum{
 	FAIL,
 	PASS
 } InfoType;
-void checkAndAlert(
+InfoType checkAndAlert(
   AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC);
 BreachType inferBreach(double value, double lowerLimit, double upperLimit);
 InfoType sendToController(BreachType breachType);
