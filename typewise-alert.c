@@ -16,20 +16,10 @@ InfoType(*Alert[])(BreachType) = {sendToController, sendToEmail,sendToConsole};
 void checkAndAlert(
     AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
   InfoType Value = FAIL;
-  BreachType breachType = inferBreach(
-   classifyTemperatureBreach[batteryChar.coolingType].lowerLimit,  classifyTemperatureBreach[batteryChar.coolingType].upperLimit, temperatureInC
+  BreachType breachType = inferBreach(classifyTemperatureBreach[batteryChar.coolingType].lowerLimit,  classifyTemperatureBreach[batteryChar.coolingType].upperLimit, temperatureInC);
  Value = Alert[alertTarget](breachType);
-    return Value;
-  );
+  return Value;
 
-  switch(alertTarget) {
-    case TO_CONTROLLER:
-      sendToController(breachType);
-      break;
-    case TO_EMAIL:
-      sendToEmail(breachType);
-      break;
-  }
 }
 
 void sendToController(BreachType breachType) {
