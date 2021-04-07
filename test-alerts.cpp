@@ -45,7 +45,7 @@ TEST_CASE("Infers If Sending to Controller is Working -CASE1") {
   REQUIRE(checkAndAlert(TO_CONTROLLER, batterychar, -50 ) == PASS);
 }
 
-TEST_CASE("Infers If Sending to COntroller is Working -CASE2") {
+TEST_CASE("Infers If Sending to Controller is Working -CASE2") {
   BatteryCharacter batterychar = {MED_ACTIVE_COOLING, "CONSOLE"};
   REQUIRE(checkAndAlert(TO_CONTROLLER, batterychar, 60) == PASS);
 }
