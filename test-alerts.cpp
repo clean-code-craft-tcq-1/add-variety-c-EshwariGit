@@ -80,3 +80,10 @@ TEST_CASE("Infers If Sending to Controller and email is Working -CASE3") {
 }
 
 
+TEST_CASE("Infers If Sending to Controller and email is Working -CASE4") {
+  BatteryCharacter batterychar = {HI_ACTIVE_COOLING, "CONSOLE"};
+  REQUIRE(sendToConsole(NORMAL) == PASS);
+  REQUIRE(sendToEmail(NORMAL) == PASS);
+}
+
+
