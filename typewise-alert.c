@@ -45,7 +45,7 @@ InfoType sendToEmail(BreachType breachType) {
   }
   return PASS;
 }
-
+// Print to console
 InfoType sendToConsole(BreachType breachType){
   printf( "The Console reads : %x\n", breachType);
   return PASS;
