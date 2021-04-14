@@ -55,11 +55,11 @@ TEST_CASE("When breach infered is NORMALcheck if ALERT is triggered")
   REQUIRE(sendToConsole(NORMAL) == PASS);	
   REQUIRE(sendToEmail(NORMAL) == PASS);
 }
-
+// Addtion of testcases to assert for confidence
 TEST_CASE("When breach inferred is HIGH check if ALERT is triggered")
 {
-  REQUIRE(sendToConsole(HIGH) == PASS);	
-  REQUIRE(sendToEmail(HIGH) == PASS);
+  REQUIRE(sendToConsole(TOO_HIGH) == PASS);	
+  REQUIRE(sendToEmail(TOO_HIGH) == PASS);
 }
 
 
