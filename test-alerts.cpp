@@ -67,3 +67,10 @@ TEST_CASE("When breach inferred is LOW check if ALERT is triggered")
   REQUIRE(sendToEmail(TOO_LOW) == PASS);
 }
 
+TEST_CASE("Infers If Sending to Controller is Working -CASE2") {
+  BatteryCharacter batterychar = {MED_ACTIVE_COOLING, "CONSOLE"};
+  REQUIRE(sendToConsole(TOO_LOW) == PASS);
+  REQUIRE(sendToEmail(TOO_LOW) == PASS);
+}
+
+
