@@ -61,5 +61,9 @@ TEST_CASE("When breach inferred is HIGH check if ALERT is triggered")
   REQUIRE(sendToConsole(TOO_HIGH) == PASS);	
   REQUIRE(sendToEmail(TOO_HIGH) == PASS);
 }
-
+TEST_CASE("When breach inferred is LOW check if ALERT is triggered")
+{
+  REQUIRE(sendToConsole(TOO_LOW) == PASS);	
+  REQUIRE(sendToEmail(TOO_LOW) == PASS);
+}
 
