@@ -11,61 +11,42 @@ BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
   return NORMAL;
 }
 
-BreachType classifyTemperatureBreach(
-    CoolingType coolingType, double temperatureInC) {
-  int lowerLimit = 0;
-  int upperLimit = 0;
-  switch(coolingType) {
-    case PASSIVE_COOLING:
-      lowerLimit = 0;
-      upperLimit = 35;
-      break;
-    case HI_ACTIVE_COOLING:
-      lowerLimit = 0;
-      upperLimit = 45;
-      break;
-    case MED_ACTIVE_COOLING:
-      lowerLimit = 0;
-      upperLimit = 40;
-      break;
-  }
-  return inferBreach(temperatureInC, lowerLimit, upperLimit);
+BreachLimit classifyTemperatureBreach[3] = {{0,35}, {0,45}, {0,40}};
+
+InfoType(*Alert[])(BreachType) = {sendToController, sendToEmail,sendToConsole};
+InfoType checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
+  InfoType Value = FAIL;
+  BreachType breachType = inferBreach(classifyTemperatureBreach[batteryChar.coolingType].lowerLimit,  classifyTemperatureBreach[batteryChar.coolingType].upperLimit, temperatureInC);
+  Value = Alert[alertTarget](breachType);
+  return Value;
+
 }
 
-void checkAndAlert(
-    AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
-
-  BreachType breachType = classifyTemperatureBreach(
-    batteryChar.coolingType, temperatureInC
-  );
-
-  switch(alertTarget) {
-    case TO_CONTROLLER:
-      sendToController(breachType);
-      break;
-    case TO_EMAIL:
-      sendToEmail(breachType);
-      break;
-  }
-}
-
-void sendToController(BreachType breachType) {
+InfoType sendToController(BreachType breachType) {
   const unsigned short header = 0xfeed;
   printf("%x : %x\n", header, breachType);
+  return PASS;
 }
 
-void sendToEmail(BreachType breachType) {
+InfoType sendToEmail(BreachType breachType) {
   const char* recepient = "a.b@c.com";
+ 
   switch(breachType) {
     case TOO_LOW:
-      printf("To: %s\n", recepient);
       printf("Hi, the temperature is too low\n");
+      printf("To: %s\n", recepient);
       break;
     case TOO_HIGH:
-      printf("To: %s\n", recepient);
+    
       printf("Hi, the temperature is too high\n");
+      printf("To: %s\n", recepient);
       break;
-    case NORMAL:
-      break;
+
   }
+  return PASS;
+}
+// Print to console
+InfoType sendToConsole(BreachType breachType){
+  printf( "The Console reads : %x\n", breachType);
+  return PASS;
 }
